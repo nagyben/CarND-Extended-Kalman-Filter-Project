@@ -12,6 +12,14 @@ I implemented a Kalman Filter for this project and achieved the following result
 |  vx  |   0.451      |    0.638   |    0.557   |
 |  vy  |   0.440      |    0.535   |    0.782   |
 
+Using both sensors together with a Kalman filter gives a better result than using one or the other independently.
+
+Additionally, this table also highlights the strengths and weaknesses of each sensor. The laser scanner has a higher positional accuracy than the radar, but a lower velocity accuracy in the x direction - and this makes sense, because the radar has range rate information in the x direction (in the y direction there would be no Doppler effect).
+
+Another important thing to note is that the accuracy of using both sensors is greater than either one individually by quite a considerable margin, demonstrating the power of the Kalman filter.
+
+The image below shows the result of both sensors enabled.
+
 ![both-sensors](examples/both.png)
 
 In this project you will utilize a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements. Passing the project requires obtaining RMSE values that are lower than the tolerance outlined in the project rubric. 
