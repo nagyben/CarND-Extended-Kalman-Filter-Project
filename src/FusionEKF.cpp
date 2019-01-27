@@ -10,7 +10,7 @@ using std::endl;
 using std::vector;
 
 #define RADAR_ENABLED 1
-#define LIDAR_ENABLED 0
+#define LIDAR_ENABLED 1
 
 /**
  * Constructor.
@@ -148,13 +148,13 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
              0,0,0,1;
 
   // set process noise sigma
-  double noise_ax = 9;
-  double noise_ay = 9;
+  const double noise_ax = 9;
+  const double noise_ay = 9;
 
   // create squared, cubed and ^4 variables for easy access
-  double dt2 = pow(dt, 2);
-  double dt3 = pow(dt, 3);
-  double dt4 = pow(dt, 4);
+  const double dt2 = pow(dt, 2);
+  const double dt3 = pow(dt, 3);
+  const double dt4 = pow(dt, 4);
 
   ekf_.Q_ << dt4/4*noise_ax, 0, dt3/2*noise_ax, 0,
              0, dt4/4*noise_ay, 0, dt3/2*noise_ay,
