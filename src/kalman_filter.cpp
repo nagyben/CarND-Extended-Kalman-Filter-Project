@@ -72,8 +72,8 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   double rho = sqrt(px*px + py*py);
   if (fabs(rho) < 0.0001) rho = 0.0001;
 
-  double phi = atan2(py, px);
-  double drho = (px*vx + py*vy) / rho;
+  const double phi = atan2(py, px);
+  const double drho = (px*vx + py*vy) / rho;
 
   VectorXd z_pred = VectorXd(3);
   z_pred << rho, phi, drho;
@@ -82,11 +82,9 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 
   // normalize between -pi and pi
   while (y[1] > M_PI) {
-    std::cout << y << std::endl;
     y[1] -= 2 * M_PI;
   }
-  while (y[1] < M_PI) {
-    std::cout << y << std::endl;
+  while (y[1] < -M_PI) {
     y[1] += 2 * M_PI;
   }
 
